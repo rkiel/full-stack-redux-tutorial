@@ -1,7 +1,7 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-active = [:rails]
+active = [:node]
 
 # PROVISION: runs as 'root' by default; append '-' at the end to run as 'vagrant'
 
@@ -14,7 +14,7 @@ servers = {
   mongo:   {type: :nosql,       provision: %w{mongodb_server} },
   aws:     {type: :aws,         provision: %w{rvm- aws-} },
   heroku:  {type: :heroku,      provision: %w{git rvm- heroku- ssh-} },
-  node:    {type: :javascript,  provision: %w{node mongodb_client} },
+  node:    {type: :javascript,  provision: %w{node} },
   express: {type: :javascript,  provision: %w{node express mongodb_client} },
   sails:   {type: :javascript,  provision: %w{node sails mongodb_client} },
   mean:    {type: :javascript,  provision: %w{git node mean mongodb_client} },
