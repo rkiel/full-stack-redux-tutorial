@@ -1,5 +1,9 @@
 # Full-Stack Redux Tutorial
 
+[http://teropa.info/blog/2015/09/10/full-stack-redux-tutorial.html](http://teropa.info/blog/2015/09/10/full-stack-redux-tutorial.html)
+[https://www.youtube.com/watch?v=xsSnOQynTHs](https://www.youtube.com/watch?v=xsSnOQynTHs)
+
+
 #### Server setup
 
 cd /vagrant/server
@@ -37,6 +41,11 @@ npm install --save-dev mocha chai
 npm install --save-dev jsdom
 npm install --save immutable
 npm install --save-dev chai-immutable
+
+npm install --save react react-dom
+npm install --save-dev react-hot-loader
+
+### Server Application
 
 #### Immutable
 
@@ -126,6 +135,17 @@ Our server now operates essentially like this:
 * The server emits a 'state' event.
 * All connected clients - including the one that initiated the original action - receive the new state.
 
+### Client Applicaiton
 
+#### React and react-hot-loader
+
+What's really cool about the way React applications get built with Redux and Immutable is that we can write everything as so-called Pure Components (also sometimes called "Dumb Components").
+
+As a concept, this is similar to pure functions, in that there are a couple of rules to follow:
+
+* A pure component receives all its data as props, like a function receives all its data as arguments. It should have no side effects, including reading data from anywhere else, initiating network requests, etc.
+* A pure component generally has no internal state. What it renders is fully driven by its input props. Rendering the same pure component twice with the same props should result in the same UI. There's no hidden state inside the component that would cause the UI to differ between the two renders.
+
+If components can't have state, where will the state be? In an immutable data structure inside a Redux store! We've already seen how that works. The big idea is to separate the state from the user interface code. The React components are just a stateless projection of the state at a given point in time.
 
 
