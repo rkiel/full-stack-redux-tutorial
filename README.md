@@ -81,3 +81,19 @@ It is quite remarkable just how small the integration surface area between our a
 Our application is going to act as a server for a separate browser application that provides the UIs for voting and viewing results. For that purpose, we need a way for the clients to communicate with the server, and vice versa.
 
 We're going to use WebSockets to communicate. More specifically, we're going to use the Socket.io library that provides a nice abstraction for WebSockets that works across browsers. It also has a number of fallback mechanisms for clients that don't support WebSockets.
+
+#### Broadcasting State from A Redux Listener
+
+Our server should be able to let clients know about the current state of the application. Our server should be able to let clients know about the current state of the application.  It can do so by emitting a Socket.io event to all connected clients whenever something changes.
+
+And how can we know when something has changed? Well, Redux provides something for exactly this purpose: You can subscribe to a Redux store. You do that by providing a function that the store will call after every action it applies, when the state has potentially changed. It is essentially a callback to state changes within the store.
+
+We are now publishing the whole state to everyone whenever any changes occur. This may end up causing a lot of data transfer. One could think of various ways of optimizing this (e.g. just sending the relevant subset, sending diffs instead of snapshots...), but this implementation has the benefit of being easy to write, so we'll just use it for our example app.
+
+In addition to sending a state snapshot whenever state changes, it will be useful for clients to immediately receive the current state when they connect to the application. That lets them sync their client-side state to the latest server state right away.
+
+We can listen to 'connection' events on our Socket.io server. We get one each time a client connects.
+
+
+
+
