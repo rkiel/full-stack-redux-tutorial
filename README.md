@@ -17,6 +17,12 @@ npm install --save immutable
 npm install --save-dev chai-immutable
 
 
+#### Immutable
+
+Immutable collections should be treated as values rather than objects. While objects represents some thing which could change over time, a value represents the state of that thing at a particular instance of time. This principle is most important to understanding the appropriate use of immutable data.
+
+it's important to use the Immutable.is() function or .equals() method to determine value equality instead of the === operator which determines object reference identity.
+
 #### Writing The Application Logic With Pure Functions
 
 The main difference is that in Redux, the application state is all stored in one single tree structure. In other words, everything there is to know about your application's state is stored in one data structure formed out of maps and arrays.
@@ -29,7 +35,7 @@ A Redux application's state tree is an immutable data structure. That means that
 
 It is generally a good idea in these state transformation functions to always morph the old state into the new one instead of building the new state completely from scratch.
 
-Here we have an acceptable version of the core logic of our app, expressed as a few functions. We also have unit tests for them, and writing those tests has been relatively easy: No setup, no mocks, no stubs. That's the beauty of pure functions. We can just call them and inspect the return values.
+Here we have an acceptable version of the core logic of our app, exp:ressed as a few functions. We also have unit tests for them, and writing those tests has been relatively easy: No setup, no mocks, no stubs. That's the beauty of pure functions. We can just call them and inspect the return values.
 
 #### Introducing Actions and Reducers
 
@@ -46,4 +52,11 @@ An important additional requirement of reducers is that if they are called with 
 Actually, given a collection of past actions, you can actually just reduce that collection into the current state. That's why the function is called a reducer: It fulfills the contract of a reduce callback function.
 
 This ability to batch and/or replay a collection of actions is a major benefit of the action/reducer model of state transitions, when compared to calling the core functions directly.
+
+#### A Taste of Reducer Composition
+
+Our core functionality is currently defined so that each function takes the whole state of the application and returns the whole, next state of the application.
+
+It is a much better idea to, whenever you can, make operations work on the smallest piece (or subtree) of the state possible. 
+
 

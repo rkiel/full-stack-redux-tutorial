@@ -15,6 +15,7 @@ function getWinners(vote) {
     else if (aVotes < bVotes) return [b];
     else return [a,b];
 }
+
 export function next(state) {
     const entries = state.get('entries').concat(getWinners(state.get('vote')));
     if (entries.size === 1) {
