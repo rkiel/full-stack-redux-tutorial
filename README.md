@@ -19,6 +19,24 @@ npm install --save-dev chai-immutable
 npm install --save redux
 npm install --save socket.io
 
+#### Client setup
+
+cd /vagrant/client
+
+npm init -y
+
+     npm install --save-dev webpack webpack-dev-server
+sudo npm install -g         webpack webpack-dev-server
+
+npm install --save-dev babel-core
+npm install --save-dev babel-loader
+npm install --save-dev babel-preset-es2015
+npm install --save-dev babel-preset-react
+
+npm install --save-dev mocha chai
+npm install --save-dev jsdom
+npm install --save immutable
+npm install --save-dev chai-immutable
 
 #### Immutable
 
