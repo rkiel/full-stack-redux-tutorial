@@ -17,6 +17,7 @@ npm install --save immutable
 npm install --save-dev chai-immutable
 
 npm install --save redux
+npm install --save socket.io
 
 
 #### Immutable
@@ -74,3 +75,9 @@ A Redux Store is initialized with a reducer function.  What you can then do is d
 The Redux store ties things together into something we'll be able to use as the central point of our application: It holds the current state, and over time can receive actions that evolve the state from one version to the next, using the core application logic we have written and exposed through the reducer.
 
 It is quite remarkable just how small the integration surface area between our application code and Redux actually is. Because we have a generic reducer function, that's the only thing we need to let Redux know about. The rest is all in our own, non-framework-specific, highly portable and purely functional code!
+
+#### Setting Up a Socket.io Server
+
+Our application is going to act as a server for a separate browser application that provides the UIs for voting and viewing results. For that purpose, we need a way for the clients to communicate with the server, and vice versa.
+
+We're going to use WebSockets to communicate. More specifically, we're going to use the Socket.io library that provides a nice abstraction for WebSockets that works across browsers. It also has a number of fallback mechanisms for clients that don't support WebSockets.
