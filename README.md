@@ -16,6 +16,8 @@ npm install --save-dev chai
 npm install --save immutable
 npm install --save-dev chai-immutable
 
+npm install --save redux
+
 
 #### Immutable
 
@@ -61,3 +63,14 @@ It is a much better idea to, whenever you can, make operations work on the small
 
 The main reducer function only hands parts of the state to lower-level reducer functions. We separate the job of finding the right location in the state tree from applying the update to that location.
 
+#### Introducing The Redux Store
+
+If you had a collection of all the actions that are ever going to occur in your application, you could just call reduce. Out pops the final state of your app. Of course, you usually don't have a collection of all those actions. They will arrive spread out over time, as things happen in the world: When users interact with the app, when data is received from networks, or when timeouts trigger.
+
+To deal with this reality, we can use a Redux Store. It is an object that, as the name implies, stores the state of your application over time.
+
+A Redux Store is initialized with a reducer function.  What you can then do is dispatch actions to that Store. The Store will internally use your reducer to apply the actions to the current state, and store the resulting, next state.  At any point in time, you can obtain the current state from inside the Store.
+
+The Redux store ties things together into something we'll be able to use as the central point of our application: It holds the current state, and over time can receive actions that evolve the state from one version to the next, using the core application logic we have written and exposed through the reducer.
+
+It is quite remarkable just how small the integration surface area between our application code and Redux actually is. Because we have a generic reducer function, that's the only thing we need to let Redux know about. The rest is all in our own, non-framework-specific, highly portable and purely functional code!
