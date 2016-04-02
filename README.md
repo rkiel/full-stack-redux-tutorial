@@ -59,4 +59,5 @@ Our core functionality is currently defined so that each function takes the whol
 
 It is a much better idea to, whenever you can, make operations work on the smallest piece (or subtree) of the state possible. 
 
+The main reducer function only hands parts of the state to lower-level reducer functions. We separate the job of finding the right location in the state tree from applying the update to that location.
 
