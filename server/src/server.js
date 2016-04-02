@@ -11,5 +11,7 @@ export function startServer(port, store) {
   // when a new client connects, tell them the current state
   io.on('connection', (socket) => {
     socket.emit('state', store.getState().toJS());
+
+    socket.on('action', store.dispatch.bind(store));
   });
 }

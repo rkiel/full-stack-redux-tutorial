@@ -94,6 +94,20 @@ In addition to sending a state snapshot whenever state changes, it will be usefu
 
 We can listen to 'connection' events on our Socket.io server. We get one each time a client connects.
 
+#### Receiving Remote Redux Actions
+
+In addition to emitting the application state out to clients, we should also be able to receive updates from them.
+
+Our server now operates essentially like this:
+
+* A client sends an action to the server.
+* The server hands the action to the Redux Store.
+* The Store calls the reducer and the reducer executes the logic related to the action.
+* The Store updates its state based on the return value of the reducer.
+* The Store executes the listener function subscribed by the server.
+* The server emits a 'state' event.
+* All connected clients - including the one that initiated the original action - receive the new state.
+
 
 
 
