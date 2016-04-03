@@ -47,6 +47,8 @@ npm install --save-dev react-hot-loader
 npm install --save react-addons-test-utils
 npm install --save react-addons-pure-render-mixin
 
+npm install --save react-router@2.0.0
+
 ### Server Application
 
 #### Immutable
@@ -156,4 +158,4 @@ If components can't have state, where will the state be? In an immutable data st
 
 If we only use immutable data in component props, and write the component as a pure component, we can have React use a more efficient strategy for detecting changes in the props.
 
-
+#### Writing The UI for The Results Screen And Handling Routing
