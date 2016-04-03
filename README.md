@@ -45,6 +45,7 @@ npm install --save-dev chai-immutable
 npm install --save react react-dom
 npm install --save-dev react-hot-loader
 npm install --save react-addons-test-utils
+npm install --save react-addons-pure-render-mixin
 
 ### Server Application
 
@@ -150,3 +151,9 @@ As a concept, this is similar to pure functions, in that there are a couple of r
 If components can't have state, where will the state be? In an immutable data structure inside a Redux store! We've already seen how that works. The big idea is to separate the state from the user interface code. The React components are just a stateless projection of the state at a given point in time.
 
 #### Writing The UI for The Voting Screen
+
+#### Immutable Data And Pure Rendering
+
+If we only use immutable data in component props, and write the component as a pure component, we can have React use a more efficient strategy for detecting changes in the props.
+
+
